@@ -19,16 +19,25 @@ interface RepoListProps {
 }
 
 const RepoList = ({ searchList }: RepoListProps) => {
-  const { repoList } = useRepository();
+  const { repoList, addRepo, removeRepo } = useRepository();
 
   const isFavorite = (repo: Repo): boolean => {
     return repoList.some((favorites) => favorites.id === repo.id);
   };
+
+  const toggleRepo = (repo: Repo) => {
+    if (isFavorite(repo)) removeRepo(repo.id);
+    else addRepo(repo);
+  };
+
   return (
     <Repositories>
       {searchList.map((repo) => (
         <Repository key={repo.id}>
-          <Star isFavorite={isFavorite(repo)} />
+          <Star
+            isFavorite={isFavorite(repo)}
+            onClick={() => toggleRepo(repo)}
+          />
           <Info>
             <TitleArea>
               <RepoName>{repo.fullName}</RepoName>
