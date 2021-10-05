@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-type IssueState = 'all' | 'open' | 'closed';
+import { IssueState } from 'types';
 
 class GithubService {
   private baseUrl = 'https://api.github.com';

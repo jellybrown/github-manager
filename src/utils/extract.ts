@@ -1,3 +1,4 @@
+import { Issue, IssueState } from 'types';
 import { Repo } from 'hooks/useRepository';
 
 export const extractRepoContent = (data: any[]): Repo[] => {
@@ -12,6 +13,19 @@ export const extractRepoContent = (data: any[]): Repo[] => {
       language: item.language,
       stargazersCount: item.stargazers_count,
       authorAvatarUrl: item.owner.avatar_url,
+    };
+  });
+};
+
+export const extractIssueContent = (data: any[]): Issue[] => {
+  return data.map((item) => {
+    return {
+      htmlUrl: item.html_url,
+      state: item.state as IssueState,
+      title: item.title,
+      number: item.number,
+      user: item.user.login,
+      avatarUrl: item.user.avatar_url,
     };
   });
 };
