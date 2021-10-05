@@ -39,7 +39,7 @@ const Issues = ({ location, match }: RouteComponentProps<MatchParams>) => {
   }, [getIssueData]);
 
   return (
-    <Layout title="Issue List">
+    <Layout title="Issue List" isHome={false}>
       <IssueList {...{ issueList }} repository={REPOSITORY} />
     </Layout>
   );

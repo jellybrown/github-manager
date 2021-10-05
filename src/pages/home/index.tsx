@@ -9,7 +9,7 @@ const Home = () => {
   const [searchList, setSearchList] = useState<Repo[]>([]);
 
   return (
-    <Layout>
+    <Layout isHome={true}>
       <SearchBar {...{ query, setQuery, searchList, setSearchList }} />
       <RepoList {...{ searchList }} />
     </Layout>

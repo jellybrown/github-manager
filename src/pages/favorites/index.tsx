@@ -7,7 +7,7 @@ const Favorites = () => {
   const { repoList, removeRepo } = useRepository();
 
   return (
-    <Layout title="Favorites">
+    <Layout title="Favorites" isHome={false}>
       <MyRepoList myRepoList={repoList} {...{ removeRepo }} />
     </Layout>
   );
