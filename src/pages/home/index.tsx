@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Repo } from 'hooks/useRepository';
+import Layout from 'components/Layout';
 import SearchBar from './SearchBar';
 import RepoList from './RepoList';
-import Layout from 'styles/layout';
 
 const Home = () => {
   const [query, setQuery] = useState('');

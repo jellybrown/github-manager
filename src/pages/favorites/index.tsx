@@ -1,13 +1,13 @@
 import React from 'react';
-import Layout from 'styles/layout';
 import useRepository from 'hooks/useRepository';
+import Layout from 'components/Layout';
 import MyRepoList from './MyRepoList';
 
 const Favorites = () => {
   const { repoList, removeRepo } = useRepository();
 
   return (
-    <Layout>
+    <Layout title="Favorites">
       <MyRepoList myRepoList={repoList} {...{ removeRepo }} />
     </Layout>
   );

@@ -3,8 +3,8 @@ import { RouteComponentProps } from 'react-router';
 import queryString from 'query-string';
 import GithubService from 'lib/githubService';
 import { extractIssueContent } from 'utils/extract';
-import Layout from 'styles/layout';
 import { Issue, IssueState } from 'types';
+import Layout from 'components/Layout';
 import IssueList from './IssueList';
 
 interface MatchParams {
@@ -39,7 +39,7 @@ const Issues = ({ location, match }: RouteComponentProps<MatchParams>) => {
   }, [getIssueData]);
 
   return (
-    <Layout>
+    <Layout title="Issue List">
       <IssueList {...{ issueList }} repository={REPOSITORY} />
     </Layout>
   );
