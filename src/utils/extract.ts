@@ -1,13 +1,19 @@
 import { Issue, IssueState } from 'types';
 import { Repo } from 'hooks/useRepository';
 
+const editText = (text: null | string) => {
+  if (text === null) return '';
+  else if (text.length <= 450) return text;
+  return `${text.slice(0, 450)} ...`;
+};
+
 export const extractRepoContent = (data: any[]): Repo[] => {
   console.log(data);
   return data.map((item) => {
     return {
       id: item.id,
       fullName: item.full_name,
-      description: item.description,
+      description: editText(item.description),
       createdAt: item.created_at,
       updatedAt: item.updated_at,
       language: item.language,
