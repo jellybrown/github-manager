@@ -17,5 +17,16 @@ export const GlobalStyles = createGlobalStyle`
         border: none;
         outline: none;
     }
+    body {
+        overflow: scroll;
+        -ms-overflow-style: none; 
+        scrollbar-width: none; 
+    }
+    body::-webkit-scrollbar {
+        display: none;
+    }
+    body.lock {
+        overflow: hidden;
+    }
 
 `;
