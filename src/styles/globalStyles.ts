@@ -21,12 +21,16 @@ export const GlobalStyles = createGlobalStyle`
         overflow: scroll;
         -ms-overflow-style: none; 
         scrollbar-width: none; 
+        font-family: 'Noto Sans KR', sans-serif;
     }
     body::-webkit-scrollbar {
         display: none;
     }
     body.lock {
         overflow: hidden;
+    }
+    button {
+        font-family: 'Noto Sans KR', sans-serif;
     }
 
 `;

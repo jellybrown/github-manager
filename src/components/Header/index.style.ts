@@ -40,12 +40,13 @@ export const NumberCircle = styled.span<{ length: number }>`
   position: absolute;
   right: -6px;
   top: -3px;
-  width: 17px;
-  height: 17px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   color: #fff;
   background: #e46a6a;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 300;
   display: flex;
   justify-content: center;
   align-items: center;

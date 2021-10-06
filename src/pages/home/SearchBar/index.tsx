@@ -1,4 +1,12 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useRef } from 'react';
+import {
+  DeleteButton,
+  Input,
+  InputWrapper,
+  SearchBarWrapper,
+  SearchButton,
+  ServiceName,
+} from './index.style';
 import GithubService from 'lib/githubService';
 import { extractRepoContent } from 'utils/extract';
 import { Repo } from 'hooks/useRepository';
@@ -16,24 +24,47 @@ const SearchBar = ({
   searchList,
   setSearchList,
 }: SearchBarProps) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const githubService = new GithubService();
+
+  const getLength = (): number => {
+    return query.replaceAll(' ', '').length;
+  };
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
   const onSearch = async () => {
-    if (query.replaceAll(' ', '').length === 0) return;
+    if (getLength() === 0) return;
     const data = await githubService.search(query);
     const list = extractRepoContent(data.items);
     setSearchList(list);
   };
 
+  const resetQuery = () => {
+    setQuery('');
+    if (!inputRef.current) return;
+    inputRef.current.focus();
+  };
+
   return (
-    <>
-      <input value={query} onChange={onChange} />
-      <button onClick={onSearch}>검색</button>
-    </>
+    <SearchBarWrapper>
+      <ServiceName>Github Manager</ServiceName>
+      <InputWrapper>
+        <Input
+          ref={inputRef}
+          placeholder="repository 검색..."
+          value={query}
+          onChange={onChange}
+        />
+        <DeleteButton
+          queryLength={getLength()}
+          onClick={resetQuery}
+        ></DeleteButton>
+      </InputWrapper>
+      <SearchButton onClick={onSearch}></SearchButton>
+    </SearchBarWrapper>
   );
 };
 

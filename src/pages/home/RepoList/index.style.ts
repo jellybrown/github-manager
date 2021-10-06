@@ -14,10 +14,11 @@ export const Info = styled.div``;
 
 export const Star = styled.div<{ isFavorite: boolean }>`
   position: absolute;
-  left: 10px;
-  top: 20px;
-  width: 30px;
-  height: 30px;
+  left: 15px;
+  top: 28px;
+  width: 25px;
+  height: 25px;
+  background-size: 100%;
   background-image: ${({ isFavorite }) =>
     isFavorite ? `url(${FillStar})` : `url(${LineStar})`};
   background-position: center;
@@ -43,10 +44,12 @@ export const Language = styled.span`
 `;
 
 export const Description = styled.p`
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: 300;
   color: #8e8e8e;
-  height: 80px;
-  padding-top: 10px;
+  height: 110px;
+  padding-top: 15px;
 `;
 
 export const SubInfo = styled.div`

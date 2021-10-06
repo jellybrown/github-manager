@@ -59,14 +59,12 @@ export const StateColor = styled.div<{ state: IssueState }>`
 export const Number = styled.span`
   color: #fff;
   display: inline-block;
-  height: 13px;
   margin: 0 10px;
 `;
 
 export const UserName = styled.span`
   color: #8e8e8e;
   display: inline-block;
-  height: 13px;
 `;
 
 export const UserAvatar = styled.div`
