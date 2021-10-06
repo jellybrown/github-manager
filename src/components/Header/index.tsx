@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   FavoriteLink,
   HeaderStyle,
@@ -9,15 +9,14 @@ import {
 import Search from 'assets/icon/search.svg';
 import User from 'assets/icon/user.svg';
 import Routes from 'constants/routes';
-import useRepository from 'hooks/useRepository';
+import { Repo } from 'hooks/useRepository';
 
 interface HeaderProps {
   isHome: boolean;
+  repoList: Repo[];
 }
 
-const Header = ({ isHome }: HeaderProps) => {
-  const { repoList } = useRepository();
-
+const Header = ({ isHome, repoList }: HeaderProps) => {
   return (
     <HeaderStyle>
       {!isHome && (

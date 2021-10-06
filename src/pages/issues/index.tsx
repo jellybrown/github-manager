@@ -6,6 +6,8 @@ import { extractIssueContent } from 'utils/extract';
 import { Issue, IssueState } from 'types';
 import Layout from 'components/Layout';
 import IssueList from './IssueList';
+import useRepository from 'hooks/useRepository';
+import Header from 'components/Header';
 
 interface MatchParams {
   userId: string;
@@ -13,6 +15,7 @@ interface MatchParams {
 }
 
 const Issues = ({ location, match }: RouteComponentProps<MatchParams>) => {
+  const { repoList } = useRepository();
   const githubService = useRef<GithubService>(new GithubService());
   const [issueState, setIssueState] = useState<IssueState>('open');
   const [issueList, setIssueList] = useState<Issue[]>([]);
@@ -39,9 +42,12 @@ const Issues = ({ location, match }: RouteComponentProps<MatchParams>) => {
   }, [getIssueData]);
 
   return (
-    <Layout title="Issue List" isHome={false}>
-      <IssueList {...{ issueList }} repository={REPOSITORY} />
-    </Layout>
+    <>
+      <Header isHome={false} repoList={repoList} />
+      <Layout title="Issue List">
+        <IssueList {...{ issueList }} repository={REPOSITORY} />
+      </Layout>
+    </>
   );
 };
 

@@ -38,10 +38,10 @@ const MyRepoList = ({ myRepoList, removeRepo }: MyRepoListProps) => {
               <UpdatedAt>{repo.updatedAt}</UpdatedAt>
               <Avatar src={repo.authorAvatarUrl} />
             </SubInfo>
-            <DeleteButton onClick={() => removeRepo(repo.id)}>
-              <img src={Delete} alt="delete button" />
-            </DeleteButton>
           </RepoLink>
+          <DeleteButton onClick={() => removeRepo(repo.id)}>
+            <img src={Delete} alt="delete button" />
+          </DeleteButton>
         </Repository>
       ))}
     </Repositories>

@@ -12,24 +12,15 @@ import {
   TitleArea,
   UpdatedAt,
 } from './index.style';
-import useRepository, { Repo } from 'hooks/useRepository';
+import { Repo } from 'hooks/useRepository';
 
 interface RepoListProps {
   searchList: Repo[];
+  isFavorite: (repo: Repo) => boolean;
+  toggleRepo: (repo: Repo) => void;
 }
 
-const RepoList = ({ searchList }: RepoListProps) => {
-  const { repoList, addRepo, removeRepo } = useRepository();
-
-  const isFavorite = (repo: Repo): boolean => {
-    return repoList.some((favorites) => favorites.id === repo.id);
-  };
-
-  const toggleRepo = (repo: Repo) => {
-    if (isFavorite(repo)) removeRepo(repo.id);
-    else addRepo(repo);
-  };
-
+const RepoList = ({ searchList, isFavorite, toggleRepo }: RepoListProps) => {
   return (
     <Repositories>
       {searchList.map((repo) => (
