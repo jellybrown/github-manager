@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useRef } from 'react';
 import {
   DeleteButton,
   Input,
@@ -42,6 +42,10 @@ const SearchBar = ({
     setSearchList(list);
   };
 
+  const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') onSearch();
+  };
+
   const resetQuery = () => {
     setQuery('');
     if (!inputRef.current) return;
@@ -57,6 +61,7 @@ const SearchBar = ({
           placeholder="repository 검색..."
           value={query}
           onChange={onChange}
+          onKeyPress={(e) => onEnter(e)}
         />
         <DeleteButton
           queryLength={getLength()}
