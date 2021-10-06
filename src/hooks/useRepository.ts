@@ -20,7 +20,6 @@ const useRepository = () => {
   }, []);
 
   useEffect(() => {
-    if (repoList.length === 0) return;
     localStorage.setItem('repo', JSON.stringify(repoList));
   }, [repoList]);
 
@@ -34,7 +33,6 @@ const useRepository = () => {
 
   const load = () => {
     const data = localStorage.getItem('repo');
-    console.log(data);
     if (data === null) return;
     const initialRepo = JSON.parse(data);
     setRepoList(initialRepo);
