@@ -1,4 +1,8 @@
-export type IssueState = 'all' | 'open' | 'closed';
+export enum IssueState {
+  All = 'all',
+  Open = 'open',
+  Closed = 'closed',
+}
 
 type UserName = {
   login: string;
