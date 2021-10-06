@@ -8,6 +8,7 @@ import Layout from 'components/Layout';
 import IssueList from './IssueList';
 import useRepository from 'hooks/useRepository';
 import Header from 'components/Header';
+import Filter from './Filter';
 
 interface MatchParams {
   userId: string;
@@ -17,16 +18,17 @@ interface MatchParams {
 const Issues = ({ location, match }: RouteComponentProps<MatchParams>) => {
   const { repoList } = useRepository();
   const githubService = useRef<GithubService>(new GithubService());
-  const [issueState, setIssueState] = useState<IssueState>('open');
+  const [issueState, setIssueState] = useState<IssueState>(IssueState.Open);
   const [issueList, setIssueList] = useState<Issue[]>([]);
   const query = queryString.parse(location.search);
   const { userId, repoName } = match.params;
   const REPOSITORY = `${userId}/${repoName}`;
 
   useEffect(() => {
-    if (query.state === 'open') return;
-    else if (query.state === 'closed') setIssueState('closed');
-    else if (query.state === 'all') setIssueState('all');
+    if (query.state === IssueState.Open) return;
+    else if (query.state === IssueState.Closed)
+      setIssueState(IssueState.Closed);
+    else if (query.state === IssueState.All) setIssueState(IssueState.All);
   }, [query.state]);
 
   const getIssueData = useCallback(async () => {
@@ -45,6 +47,7 @@ const Issues = ({ location, match }: RouteComponentProps<MatchParams>) => {
     <>
       <Header isHome={false} repoList={repoList} />
       <Layout title="Issue List">
+        <Filter {...{ issueState, setIssueState }} />
         <IssueList {...{ issueList }} repository={REPOSITORY} />
       </Layout>
     </>
