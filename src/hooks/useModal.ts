@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useModal = (initialState = false) => {
   const [opened, setOpened] = useState(initialState);
