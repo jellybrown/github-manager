@@ -6,7 +6,7 @@ class GithubService {
 
   search(query: string): Promise<any> {
     return axios
-      .get(`${this.baseUrl}/search/repositories?q=${query}`)
+      .get(`${this.baseUrl}/search/repositories?q=${query}&per_page=50`)
       .then((res) => res.data)
       .catch((err) => new Error('GithubService search Error'));
   }

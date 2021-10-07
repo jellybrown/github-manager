@@ -65,6 +65,8 @@ export const Number = styled.span`
 export const UserName = styled.span`
   color: #8e8e8e;
   display: inline-block;
+  font-weight: 300;
+  font-size: 14px;
 `;
 
 export const UserAvatar = styled.div`

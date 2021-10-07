@@ -47,6 +47,8 @@ export const Language = styled.span`
 
 export const Description = styled.p`
   font-size: 15px;
+  font-weight: 300;
+  line-height: 1.3;
   color: #8e8e8e;
   height: 120px;
   padding-top: 10px;
