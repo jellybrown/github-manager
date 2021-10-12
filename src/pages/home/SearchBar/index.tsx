@@ -25,7 +25,7 @@ const SearchBar = ({
   setSearchList,
 }: SearchBarProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const githubService = new GithubService();
+  const githubService = useRef<GithubService>(new GithubService());
 
   const getLength = (): number => {
     return query.replaceAll(' ', '').length;
@@ -37,7 +37,7 @@ const SearchBar = ({
 
   const onSearch = async () => {
     if (getLength() === 0) return;
-    const data = await githubService.search(query);
+    const data = await githubService.current.search(query);
     const list = extractRepoContent(data.items);
     setSearchList(list);
   };
